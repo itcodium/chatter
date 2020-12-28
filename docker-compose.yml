@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  backend:
+    container_name: chatter_server
+    build: ./server
+    image: chatter_server
+    working_dir: /usr/src/chatter/server
+    volumes:
+      - ./server:/usr/src/chatter/server
+    links:
+     - mongo    
+    ports:
+      - "3001:81"
+    stdin_open: true
+    tty: true
+  mongo:
+    container_name: chatter_mongo
+    image: mongo
+    environment:
+      - MONGODB_DATABASE="chatter"
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+    
+volumes:
+  mongodata:
+          
