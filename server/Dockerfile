@@ -1,4 +1,4 @@
-FROM  python:3.5
+FROM  python:3.7
 WORKDIR /usr/src/chatter/server
 COPY requirements.txt .
 RUN pip install -r requirements.txt
