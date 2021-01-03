@@ -1,0 +1,48 @@
+<div class="form-group" ng-if="input.method=='DELETE'">
+    <label for="category">{{input.pageText.category}}</label>
+    <input class="form-control"  ng-disabled="input.method=='DELETE' || input.method=='ADD'" minlength="4" maxlength="64" name="category" id="category" required="required" ng-model="input.model.category">
+    
+    <div ng-show="form.$submitted || form.category.$touched">
+        <span class="label label-danger" ng-show="form.category.$error.required">{{input.AplicationText.required}}</span>
+        <span class="label label-danger"  ng-show="form.category.$error.minlength">{{input.pageText.usuario_minlength}}</span>
+    </div>
+</div>
+
+<div class="form-group" ng-if="input.method=='EDIT' || input.method=='ADD'">
+    <label for="category">{{input.pageText.category}}</label>
+     <select class="form-control" name="category" id="category" ng-model="input.model.category">
+      <option ng-repeat="item in input.categories" value="{{item.category}}">{{item.category}}</option>
+    </select>
+    
+    <div ng-show="form.$submitted || form.category.$touched">
+        <span class="label label-danger" ng-show="form.category.$error.required">{{input.AplicationText.required}}</span>
+        <span class="label label-danger"  ng-show="form.category.$error.minlength">{{input.pageText.usuario_minlength}}</span>
+    </div>
+</div>
+
+<div class="row">
+    <div  class="col-xs-6">
+         <div class="form-group">
+            <label for="us">{{input.pageText.us}}</label>
+            <textarea  class="form-control" name="us"   id="us"  ng-model="input.model.us" ng-disabled="input.method=='DELETE'"  required="required">
+                </textarea>
+            <div ng-show="form.$submitted || form.us.$touched">
+                <span class="label label-danger" ng-show="form.us.$error.required">{{input.AplicationText.required}}</span>
+            </div>
+        </div>
+    </div>
+    <div  class="col-xs-6">
+         <div class="form-group">
+            <label for="es">{{input.pageText.es}}</label>
+            <textarea  class="form-control" name="es"   id="es"  ng-model="input.model.es" ng-disabled="input.method=='DELETE'" required="required">
+                </textarea>
+            <div ng-show="form.$submitted || form.es.$touched">
+                <span class="label label-danger" ng-show="form.es.$error.required">{{input.AplicationText.required}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <label for="meaning">{{input.pageText.meaning}}</label>
+    <textarea class="form-control" name="meaning" id="meaning" ng-model="input.model.meaning" ng-disabled="input.method=='DELETE'" ></textarea>
+</div>

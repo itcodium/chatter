@@ -1,0 +1,19 @@
+
+<div class="form-group">
+    <label for="category">{{input.pageText.category}}</label>
+    <input class="form-control" ng-disabled="input.method=='DELETE'" minlength="4" maxlength="64" name="category" id="category" required="required" ng-model="input.model.category">
+    
+    <div ng-show="form.$submitted || form.category.$touched">
+        <span class="label label-danger" ng-show="form.category.$error.required">{{input.AplicationText.required}}</span>
+        <span class="label label-danger"  ng-show="form.category.$error.minlength">{{input.pageText.usuario_minlength}}</span>
+    </div>
+</div>
+
+ <div class="form-group">
+    <label for="description">{{input.pageText.description}}</label>
+    <textarea  class="form-control" name="description"   id="description"  ng-model="input.model.description" ng-disabled="input.method=='DELETE'" >
+        </textarea>
+    <div ng-show="form.$submitted || form.description.$touched">
+        <span class="label label-danger" ng-show="form.description.$error.required">{{input.AplicationText.required}}</span>
+    </div>
+</div>

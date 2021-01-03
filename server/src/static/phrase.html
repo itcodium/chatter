@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post data</title>
+		
+<script src="assets/plugins/angular/angular.min.js"></script>
+<script src="assets/plugins/angular/angular-route.js"></script>
+<link href="assets/plugins/uniform/css/uniform.default.min.css" rel="stylesheet"/>
+        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<style>
+body{
+padding:10px;
+}
+</style>		
+<script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+app.config(function ($httpProvider) {
+    $httpProvider.defaults.transformRequest = function(data){
+        if (data === undefined) {
+            return data;
+        }
+        return $.param(data);
+    }
+});
+
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+	var config = {
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    };
+				
+	$scope.phrase={};
+	
+	$scope.postdata = function () {
+	      $http.post('/api/ingles', $scope.phrase, config)
+                       .then(function (response) {
+								$scope.msg=response.statusText;
+								$scope.statusval=response.status;
+								$scope.phrase={};
+                           });
+						 
+	};
+		
+});
+
+ 
+
+</script>
+
+    </head>
+    <body  >
+	
+	<form ng-app="postserviceApp" ng-controller="postserviceCtrl">
+		  
+          <div class="form-group">
+            <label for="us">Category</label>
+            <input type="text" ng-model="phrase.category" class="form-control" id="category" aria-describedby="categoryHelp" placeholder="Categoria"></textarea>
+            <small id="categoryHelp" class="form-text text-muted">Ingresar categoria</small>
+          </div>
+          <div class="form-group">
+			<label for="us">US</label>
+			<textarea type="text" ng-model="phrase.us" class="form-control" id="us" aria-describedby="emailHelp" placeholder="Texto en ingles."></textarea>
+			<small id="emailHelp" class="form-text text-muted">Ingresar frase en ingles</small>
+		  </div>
+		  <div class="form-group">
+			<label for="es">ES</label>
+			<textarea ng-model="phrase.es" type="text" class="form-control" id="es" placeholder="Texto en español"></textarea>
+		  </div>
+		  <div class="form-group">
+			<label for="meaning">Meaning</label>
+			<textarea ng-model="phrase.meaning" type="text" class="form-control" id="meaning" placeholder="Significado del texto.">
+			</textarea>
+		  </div>
+		  <button type="button" class="btn btn-primary" ng-click="postdata()">Submit</button>
+		  
+		  
+		  <div ng-if="msg" class="alert alert-primary" role="alert">
+			<p>Output Message : {{msg}}</p>
+			<p>StatusCode: {{statusval}}</p>
+		  </div>
+</form>
+ 
+
+
+</div>
+
+
+        <!-- Javascripts -->
+        <script src="assets/plugins/jquery/jquery-2.1.3.min.js"></script>
+        <script src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="assets/plugins/pace-master/pace.min.js"></script>
+        <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/plugins/switchery/switchery.min.js"></script>
+        <script src="assets/plugins/uniform/jquery.uniform.min.js"></script>
+        <script src="assets/plugins/classie/classie.js"></script>
+        <script src="assets/plugins/waves/waves.min.js"></script>
+        <script src="assets/plugins/3d-bold-navigation/js/main.js"></script>
+        <script src="assets/plugins/waypoints/jquery.waypoints.min.js"></script>
+        <script src="assets/plugins/jquery-counterup/jquery.counterup.min.js"></script>
+        <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap-switch.js"></script>
+        
+
+         
+        <script src="assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
+        
+        
+        <script src="assets/js/app.routes.js"></script>
+        <script src="assets/js/app.lang.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/app.config.js"></script>
+        <script src="assets/js/controllers/admin/users.js"></script>
+        <script src="assets/js/controllers/admin/perfil.js"></script>
+        <script src="assets/js/controllers/admin/modulo.js"></script>
+        <script src="assets/js/controllers/admin/perfilmodulo.js"></script>
+        <script src="assets/js/controllers/admin/menu.js"> </script>
+        <script src="assets/js/directives/directives.js"></script>
+        <script src="assets/js/services/services.js"></script>
+
+      
+
+  
+    </body>
+</html>

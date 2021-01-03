@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" style="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
+
+	
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic.js"></script>
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_area.js"></script>
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_bivariate.js"></script>
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_multi_series.js"></script>
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_stacked.js"></script>
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_stacked_nest.js"></script>
+
+	<script type="text/javascript" src="assets/js/charts/d3/lines/lines_basic_gradient.js"></script>
+	<!-- /theme JS files -->
+
+<script type="text/javascript" >
+$(function () {
+	var path="assets/demo_data/d3/lines/"
+	var lv=new LineBasic('#d3-line-basic', 400,path+"lines_basic.tsv");
+	var bArea =new AreaBasic('#d3-area-basic', 400,path+"lines_basic.tsv");
+    var aAreaBiv=new AreaBivariate('#d3-area-bivariate', 400,path+"lines_bivariate.tsv");
+    var lbm=new LineBasicMiltilineSeries('#d3-line-multi-series', 400, path+"lines_multi_series.tsv");
+    var areaStacked=new AreaStacked ('#d3-area-stacked', 400,path+"lines_stacked.tsv");
+    var areaNested=AreaNested('#d3-area-stacked-nest', 400,path+"lines_stacked_nest.csv");
+	var lg=new LineGradient('#d3-line-gradient', 400,path+"lines_gradient.tsv");
+
+});
+
+
+</script>
+
+	<style>
+	.box{
+		background-color:#fff;
+		padding:5px;
+		border: solid 1px #ddd;
+		margin-bottom:5px;
+	}
+	
+	.title{
+		background-color:#fff;
+		border: solid 1px #ddd;
+		padding:10px;
+		margin-bottom:0px;
+		font-size:20px;
+	}
+	html,body{
+		margin:0;
+		padding:0;
+	}
+	html{
+		margin:0px;
+		padding:0px;
+	}
+	</style>
+</head>
+
+<body>
+		<!-- Simple line chart -->
+		<p class="title">Line-basic 
+			<a href="assets/demo_data/d3/lines/lines_basic.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-line-basic"></div>
+			<div class="chart" id="d3-line-basic2"></div>
+		</div>
+
+					
+		<!-- Area chart -->					
+		<p class="title">Area chart
+			<a href="assets/demo_data/d3/lines/lines_basic.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-area-basic"></div>
+		</div>
+					
+		<!-- Bivariate area chart -->
+		<p class="title">Bivariate Area Chart
+			<a href="assets/demo_data/d3/lines/lines_bivariate.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-area-bivariate"></div>
+		</div>
+
+		<!-- Multiple series chart -->
+		<p class="title">Multiple series
+			<a href="assets/demo_data/d3/lines/lines_multi_series.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-line-multi-series"></div>
+		</div>
+		
+		<!-- Stacked areas chart -->
+		<p class="title">Stacked areas
+			<a href="assets/demo_data/d3/lines/lines_stacked.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-area-stacked"></div>
+		</div>
+		
+		 <!-- Stacked areas via nest chart -->
+		<p class="title">Stacked areas via nest
+			<a href="assets/demo_data/d3/lines/lines_stacked_nest.csv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-area-stacked-nest"></div>
+		</div>
+		
+		<!-- Gradient encoding chart -->
+		<p class="title">Gradient encoding
+			<a href="assets/demo_data/d3/lines/lines_gradient.tsv">DataSet</a>
+		</p>
+		<div class="chart-container box" >
+			<div class="chart" id="d3-line-gradient"></div>
+		</div>
+ 
+</body>
+</html>

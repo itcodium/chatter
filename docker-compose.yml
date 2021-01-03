@@ -13,6 +13,8 @@ services:
       - "3001:81"
     stdin_open: true
     tty: true
+    environment:
+     - CHAT_BOT_ENV=development
   mongo:
     container_name: chatter_mongo
     image: mongo

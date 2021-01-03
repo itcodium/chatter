@@ -1,0 +1,55 @@
+  <!-- https://github.com/ionic-team/ionicons  -->
+
+    <div class="p-3 mb-2 bg-gradient-info text-white" ng-if="modalEdit.items.length==0">
+        {{pageText.emptyList}} <a ng-click="modalEdit.open('ADD')" class="btn btn-primary" >+</a>
+    </div>
+    
+    <div class="col-sm-12" ng-if="modalEdit.items.length">
+
+        <form action="#" method="GET" data-default="150">
+            <div class="input-group">
+                <input type="text" name="Buscar" class="form-control input-search" ng-model="search_phrase" placeholder="{{AplicationText.search}}">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" ng-click="search()" type="button"><i class="fa fa-search">{{AplicationText.search}}</i></button>
+                </span>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-xs-1">{{pageText.category}}</th>
+                    <th class="col-xs-4">{{pageText.us}}</th>
+                    <th class="col-xs-4">{{pageText.es}}</th>
+                    <th><a ng-click="modalEdit.open('ADD')" class="btn btn-primary" >+</a></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in modalEdit.items">
+                <tr class="row">
+                    <td>{{item.category}}</td>
+                    <td>{{item.us}}</td>
+                    <td>{{item.es}}</td>
+                    <td>
+                        <span ng-click="modalEdit.open('EDIT',$index)" class="btn btn-primary" >
+                            <i class="icon ion-edit"></i>
+                        </span>
+                        <span ng-click="modalEdit.open('DELETE',$index)" class="btn btn-danger" >
+                            <i class="icon ion-android-delete"></i>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<modal name="modalEdit" input="modalEdit"></modal>
+
+                        
+                      
+
+
+  
+  
+
+
+

@@ -1,0 +1,50 @@
+
+<form action="#" method="GET" data-default="150">
+    <div class="input-group">
+        <input type="text" name="Buscar" class="form-control input-search" ng-model="search" placeholder="{{AplicationText.search}}">
+        <span class="input-group-btn">
+            <button class="btn btn-success" ng-click="search()" type="button"><i class="fa fa-search">{{AplicationText.search}}</i></button>
+        </span>
+    </div>
+</form>
+ 
+  <!-- https://github.com/ionic-team/ionicons  -->
+    <div class="col-sm-12">
+        
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-xs-4">{{pageText.category}}</th>
+                    <th class="col-xs-4">{{pageText.description}}</th>
+                    <th><a ng-click="modalEdit.open('ADD')" class="btn btn-primary" >+</a></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in modalEdit.items| filter:search">
+                <tr class="row">
+                    <td><a href="/ingles/index.html#/phrases/list?category={{item.category}}"> {{item.category}}</a></td>
+                    <td>{{item.description}}</td>
+                    <td>
+                        <span ng-click="modalEdit.open('EDIT',$index)" class="btn btn-primary" >
+                            <i class="icon ion-edit"></i>
+                        </span>
+                        <span ng-click="modalEdit.open('DELETE',$index)" class="btn btn-danger" >
+                            <i class="icon ion-android-delete"></i>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<modal name="modalEdit" input="modalEdit"></modal>
+
+                        
+                      
+
+
+  
+  
+
+
+

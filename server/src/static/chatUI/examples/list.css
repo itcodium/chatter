@@ -1,0 +1,67 @@
+
+
+
+/* css list sprites background ------------- */
+
+#listsprites {float:left; margin:0px; font:14px/16px 'lucida grande', tahoma, verdana, arial, sans-serif;}
+#listsprites a {border:0; color:#3B5998; text-decoration:none; line-height:30px;}
+#__listsprites a:hover,
+#listsprites a:focus,
+#listsprites a:active {text-decoration:underline; background:transparent;}
+#_listsprites .user {overflow:hidden; margin:0 0 10px;}
+#_listsprites .user img {float:left; margin:0 8px 0 0;}
+#_listsprites .user a {display:block;}
+#_listsprites .fn {padding:3px 0; font-weight:bold;}
+#listsprites ul { padding:0; margin:0; list-style:none;}
+#listsprites li a {padding:3px}
+#__listsprites li a:hover,
+#listsprites li a:focus,
+#listsprites li a:active {
+	text-decoration:underline; 
+	}
+#listsprites li.current a {font-weight:bold; color:#333; background:#fafafa;}
+
+#listsprites li a:before {
+    content:"";
+    float:left;
+    
+    margin:15px 0px 0px 15px;
+    
+    
+    background:url(images/sprite.png);
+}
+
+/* Eng css list sprites background -------------- */
+ 
+
+
+/* css list style with arrow images  -------------- */
+.imglist ul{
+	margin:0px 10px 0 10px;
+}
+.imglist li{
+	font-size:14px;
+	margin-left:0px;
+	padding:0px;
+	list-style:url(images/arrow.png);
+	line-height:30px;
+}
+.imglist li a:link, .imglist li a:visited{
+	color:#1e598e;
+	text-decoration:none;
+
+}
+.imglist li a:hover{
+	color:#0A7CAF;
+	padding:2px;
+    -moz-box-shadow: 0px 0px 12px #9e9ea3;
+    -webkit-box-shadow: 0px 0px 12px #9e9ea3;
+    box-shadow: 0px 0px 12px #9e9ea3;
+    border:none 0px #000000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    cursor: col-resize;
+}
+
+/* End css list style with arrow images  -------------- */

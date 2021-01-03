@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<head>
+  <title>ChatUI</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../build/chatUI.css">
+  <link rel="stylesheet" href="list.css">
+  <meta name="viewport" content="width=device-width">
+  <style>
+    html, body{
+      margin:0;
+      padding:0;
+      border:0;
+    }
+    #chatbot{
+      width:100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbot">
+  </div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="../build/index-d3.min.js"></script>
+
+	<script src="jquery-3.2.1.min.js"></script>
+
+  <script type="text/javascript">
+  
+  var ChatBotSowa=function(chat){
+	var _this=this;
+	var url="http://chatbot-chatbot01.7e14.starter-us-west-2.openshiftapps.com/api/chatbot?text="
+
+	// var url="http://localhost:5000/api/chatbot?text="
+	_this.total=0;
+	_this.msg=[];
+
+
+	this.sendMessage=function(msg){
+	 	console.log("msg",url+msg)
+		$.ajax(url+msg, {
+		    success: function(data) {
+		        console.log("data",data)
+		        if (typeof data.text!='undefined'){
+		        	_this.print(data.text)
+		        }else{
+		        	_this.print(data)	
+		        }
+		    },
+		    error: function(error) {
+		        console.log("error", error) 
+		    }
+		});
+	 
+	}
+	
+	
+	this.getMessage=function(msg){
+		var delay=	msg.length * 0; 
+		return { type: 'text', value: msg, class: 'bot', delay: delay }
+	};
+	this.print=function(msg){
+		console.log("msg",typeof msg)
+		if(typeof msg=="string"){
+			chat.addBubble(_this.getMessage(msg), function (){});
+			// this.showList();
+
+		}
+		else{
+
+				if(typeof msg=="object"){
+					var list=[]
+					for (i = 0; i < msg.length; i++) { 
+					    list.push(msg[i].report);
+					}
+					this.showList(list)
+				}else{
+					chat.addBubble(_this.getMessage(msg[_this.total]), function (){
+						_this.total++
+						if(_this.total<msg.length){
+							_this.print(msg)
+						}else{
+							_this.showInput();
+						}
+					});
+				}
+		}
+		
+	}
+	
+	this.writeMessage=function(msg){
+		_this.total=0;
+		_this.print(msg)
+	}
+	
+	this.showUserInput=function (){
+		chat.showInput(function(input){
+			chat.addBubble({ type: 'text', value: input, class: 'human', delay: 0 });
+			_this.sendMessage(input);
+			/*
+				chat.hideInput();
+			*/
+		  });
+	}
+	this.showImage=function(){
+		chat.addBubble({ 
+            type: 'image', 
+            value: 'https://github.com/svift-org/ChatUI/blob/master/README/ChatUI-Logo.png?raw=true', 
+            class: 'bot', 
+            delay: 1000 })	
+	}
+	
+
+
+	this.showList=function(param){
+		chat.addBubble({ 
+            type: 'list', 
+            value: param, 
+            class: 'bot', 
+            delay: 1000 })	
+	}
+	
+}
+
+
+
+
+    var chat = chatUI(d3.select('#chatbot'));
+
+    chat.types.image = function(bubble, options, callback){
+      	bubble
+      	.append('div')
+        .attr('class', 'cb-waiting')
+        .html('<div class="circle"></div><div class="circle"></div><div class="circle"></div>');
+
+      	var image = new Image();
+      		image.src = options.value;
+      		image.addEventListener('load', 
+      			function(){
+        			bubble.select(".cb-waiting").remove();
+        			options.value = '<img src="' + options.value + '" />';
+        			chat.appendText(bubble, options, callback);
+      }, false);
+    };
+
+    chat.types.list = function(bubble, options, callback){
+		bubble
+      	.append('div')
+        .attr('class', 'cb-waiting')
+        .html('<div class="circle"></div><div class="circle"></div><div class="circle"></div>');
+       
+        // 1. Crear lista 
+		var i,text='<div id="listsprites"><ul>';
+		for (i = 0; i < options.value.length; i++) { 
+		    text += '<li><a class="itemList" href="#">'+options.value[i]+"</a></li>";
+		}
+		text=text+"</ul></div>";
+
+		// 2. ensertar bubble
+      	bubble.select(".cb-waiting").remove();
+		options.value=text;
+      	chat.appendText(bubble, options, callback);
+
+      	// 3. Agergar evento a cada elemento de la lista
+      	var list=document.getElementsByClassName("itemList")
+		for (var i = 0, len = list.length; i < len; i++) {
+		  		list[i].onclick=function(){
+	   		 		console.log("Yeah!",this.text)
+				}
+		  		
+		}
+    };
+
+	var appChat=new ChatBotSowa(chat)
+		// appChat.writeMessage(['Hi there!','What is your name?'])
+		appChat.showUserInput()
+
+
+    // chat.addBubble({ type: 'text', value: 'Hi there!', class: 'bot', delay: 1000 }, function () {});
+    
+
+      //chat.addBubble({ type: 'text', value: 'What is your name?', class: 'bot', delay: 0 });
+	  /*
+	function showInput(chat){
+		chat.showInput(function(input){
+			//As input arrives, present the input
+			chat.addBubble({ type: 'text', value: input, class: 'human', delay: 0 });
+			//Hide the input container
+			chat.hideInput();
+		  });
+
+	}
+	*/
+	
+	// cHAT RESPONSE
+	/*
+	//And welcome the user with her name
+	chat.addBubble({ type: 'text', value: 'Hello '+input, class: 'bot', delay: 500 });
+	*/
+			
+
+			
+			
+  </script>
+</body>
+</html>
