@@ -33,59 +33,12 @@ resource_fields = {
 
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
-
-
-
-# Uncomment the following lines to enable verbose logging
-# import logging
-# logging.basicConfig(level=logging.INFO)
-
-db_uri=''
-strEnvi=""
-try:
-    strEnvi=os.environ["CHAT_BOT_ENV"]
-except Exception as err:
-    print("error -> ",err)
-
-if (strEnvi=="development"):
-    db_uri='mongodb://0.0.0.0:27017',
-else:
-    db_uri='mongodb://0.0.0.0:27017',
+ 
  
 from Bot import Bot
 from pymongo import MongoClient
 from pprint import pprint
-# -------------------------------------------------------
-# Funcion principal 
-# -------------------------------------------------------
-class ChatBotSowa(Resource,CustomException):
-    bot = Bot().get()
-    def get(self):
-        os_env=""
-        try:
-            usr_input=request.args.get('text')
-            bot_output = self.bot.get_response(usr_input)
-            print(" =============  Chat bot process - ",bot_output)
-            if (bot_output=='report_list()'):
-                r=ChatBotGetReports()
-                data=r.get()
-                return  support_jsonp_data(data)
-            return support_jsonp_custom({"text":bot_output},resource_fields)
-        except Exception as err:
-            return self.showCustomException(err,request.args)
-
-class ChatBotGetReports():
-    client = MongoClient(db_uri)
-    db=client['chatter']
-    def get(self):
-        try:
-            reports = self.db['reports']
-            data=self.db['reports'].find()
-            data=dumps(data, ensure_ascii=False) 
-            return data
-        except Exception as err:
-            return self.showCustomException(err,request.args)
-
+ 
 ''' 
 
 
