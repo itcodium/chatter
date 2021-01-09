@@ -107,3 +107,9 @@ server/src/api/__pycache__
 server/src/api/bus/__pycache__
 server/src/api/data/__pycache__
 server/src/api/adapters/__pycache__
+server/src/__pycache__/
+server/src/api/__pycache__/
+server/src/api/bus/__pycache__/
+server/src/api/data/__pycache__/
+server/src/api/adapters/__pycache__/
+
