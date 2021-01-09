@@ -5,6 +5,7 @@ from .support_jsonp	import support_jsonp_ok
 from .support_jsonp	import support_jsonp_data
 
 from .customException import CustomException
+from .Bot import Bot
 from .chatBotSowa import ChatBotSowa
 #from .chatBotSowa import ChatBotTrainSowa
 #from .chatBotSowa import ChatBotDBTest

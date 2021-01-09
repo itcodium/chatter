@@ -1,0 +1,10 @@
+{
+    "python.linting.ignorePatterns": [
+        ".vscode/*.py",
+        "**/site-packages/**/*.py",
+        "**/__pycache__/**"
+    ],
+    "files.exclude": {
+        "**/__pycache__": true
+    }
+}

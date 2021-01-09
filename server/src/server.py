@@ -11,9 +11,11 @@ from flask import abort, redirect, url_for
 from flask import Blueprint, render_template
 
 from api import support_jsonp
-from api import ChatBotSowa
+#from api import ChatBotSowa
+
 #from api import ChatBotTrainSowa
-#from api import ChatBotDBTest
+from api.bus import TestBus
+from api.bus import ChatBotBus
 #from api import ChatBotDeleteSowa
 #from api import ChatBotCreateReportListSowa
 
@@ -54,11 +56,12 @@ def index():
 	return application.send_static_file('index.html')
 
 api = Api(application)
-api.add_resource(ChatBotSowa, '/api/chatbot')
+api.add_resource(TestBus, '/api/db')
+api.add_resource(ChatBotBus, '/api/chatbot')
 #api.add_resource(ChatBotTrainSowa, '/api/chatbot/train')
 #api.add_resource(ChatBotDeleteSowa, '/api/chatbot/delete')
 #api.add_resource(ChatBotCreateReportListSowa, '/api/chatbot/setreport')
-#api.add_resource(ChatBotDBTest, '/api/db')
+
 
 if __name__ == "__main__":
 	application.run(host='0.0.0.0', port=81)     
