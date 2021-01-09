@@ -41,15 +41,6 @@ from pprint import pprint
  
 ''' 
 
-
-class ChatBotTrainSowa(Resource,CustomException):
-    def get(self):
-        try:
-            bot.train("./chatbot/train/")
-            return {"train":"ok"}
-        except Exception as err:
-            return self.showCustomException(err,request.args)
-
 class ChatBotDeleteSowa(Resource,CustomException):
     client = MongoClient(db_uri)
     db=client['chatter']

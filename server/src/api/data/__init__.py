@@ -1,6 +1,7 @@
 from .Db import Db
-from .Test import TestData
+from .Bot import BotData
 from .Reports import ReportsData
+from .Test import TestData
 
 
 

@@ -14,7 +14,7 @@ from api import support_jsonp
 from api.bus import TestBus
 from api.bus import ChatBotBus
 from api.bus import TrainBus
-#from api import ChatBotDeleteSowa
+from api.bus import ChatBotDelete
 #from api import ChatBotCreateReportListSowa
 
 current_folder = os.path.realpath(
@@ -57,7 +57,7 @@ api = Api(application)
 api.add_resource(TestBus, '/api/db')
 api.add_resource(ChatBotBus, '/api/chatbot')
 api.add_resource(TrainBus, '/api/chatbot/train')
-#api.add_resource(ChatBotDeleteSowa, '/api/chatbot/delete')
+api.add_resource(ChatBotDelete, '/api/chatbot/delete')
 #api.add_resource(ChatBotCreateReportListSowa, '/api/chatbot/setreport')
 
 

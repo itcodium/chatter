@@ -12,11 +12,13 @@ resource_fields = {
     'message':fields.String
 }
 
-class TrainBus(Resource,CustomException):
+from api.data import BotData
+
+class ChatBotDelete(Resource,CustomException):
     def get(self):
         try:
-            bot = Bot()
-            result=bot.train()
-            return support_jsonp_custom(result,resource_fields)
+            bot=BotData()
+            data=bot.delete()
+            return support_jsonp_custom(data,resource_fields)
         except Exception as err:
             return self.showCustomException(err,request.args)

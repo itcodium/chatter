@@ -18,7 +18,6 @@ class TemperatureAdapter(LogicAdapter):
             return True
         else:
             return False
- 
 
     def process(self, statement, additional_response_selection_parameters=None):
         try:

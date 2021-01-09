@@ -1,6 +1,7 @@
 import os
+import inspect
 from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ChatterBotCorpusTrainer
 
 class Bot:
     bot=None
@@ -26,6 +27,7 @@ class Bot:
     def get(self):
         return self.bot
     def train(self):
-        trainer = ListTrainer(self.bot)
-        trainer.train("./train/")
-        return "Train excecuted."
+        trainer = ChatterBotCorpusTrainer(self.bot)
+        trainer.train("/usr/src/chatter/server/src/api/bot/train")
+        return {"status":"ok", "message":  "Train excecuted."}
+        
