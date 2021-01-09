@@ -15,7 +15,7 @@ from api.bus import TestBus
 from api.bus import ChatBotBus
 from api.bus import TrainBus
 from api.bus import ChatBotDelete
-#from api import ChatBotCreateReportListSowa
+from api.bus import ReportsCreateBus
 
 current_folder = os.path.realpath(
 	os.path.abspath(
@@ -58,7 +58,7 @@ api.add_resource(TestBus, '/api/db')
 api.add_resource(ChatBotBus, '/api/chatbot')
 api.add_resource(TrainBus, '/api/chatbot/train')
 api.add_resource(ChatBotDelete, '/api/chatbot/delete')
-#api.add_resource(ChatBotCreateReportListSowa, '/api/chatbot/setreport')
+api.add_resource(ReportsCreateBus, '/api/report/create')
 
 
 if __name__ == "__main__":
