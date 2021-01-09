@@ -15,17 +15,3 @@ class ReportsData(Db):
         data=self.db['reports'].find()
         data=dumps(data, ensure_ascii=False) 
         return data
-        
-        
-'''
-class TestData(Db): 
-    def getTest(self):
-        self.db['posts'].delete_many({})
-        data = {"author": "Mike",
-                "text": "My first blog post!",
-                "tags": ["mongodb", "python", "pymongo"],
-                "date": datetime.datetime.utcnow()}
-        post_id = self.db.posts.insert_one(data).inserted_id
-        return self.db['posts'].find()
-'''        
-

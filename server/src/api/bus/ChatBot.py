@@ -4,7 +4,7 @@ from api.customException import CustomException
 from api.support_jsonp import support_jsonp_data
 from api.support_jsonp	import support_jsonp_custom
 
-from Bot import Bot
+from api.bot import Bot
 from api.bus import Reports
 
 resource_fields = {

@@ -25,3 +25,7 @@ class Bot:
             return  'mongodb://mongo:27017/chatter',
     def get(self):
         return self.bot
+    def train(self):
+        trainer = ListTrainer(self.bot)
+        trainer.train("./train/")
+        return "Train excecuted."

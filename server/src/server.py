@@ -11,11 +11,9 @@ from flask import abort, redirect, url_for
 from flask import Blueprint, render_template
 
 from api import support_jsonp
-#from api import ChatBotSowa
-
-#from api import ChatBotTrainSowa
 from api.bus import TestBus
 from api.bus import ChatBotBus
+from api.bus import TrainBus
 #from api import ChatBotDeleteSowa
 #from api import ChatBotCreateReportListSowa
 
@@ -58,7 +56,7 @@ def index():
 api = Api(application)
 api.add_resource(TestBus, '/api/db')
 api.add_resource(ChatBotBus, '/api/chatbot')
-#api.add_resource(ChatBotTrainSowa, '/api/chatbot/train')
+api.add_resource(TrainBus, '/api/chatbot/train')
 #api.add_resource(ChatBotDeleteSowa, '/api/chatbot/delete')
 #api.add_resource(ChatBotCreateReportListSowa, '/api/chatbot/setreport')
 
